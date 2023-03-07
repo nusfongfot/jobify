@@ -3,7 +3,9 @@ import logo from '../assets/images/logo.svg'
 import Joi from 'joi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/authContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie';
+
 
 const formSchema = Joi.object({
   email: Joi.string()
@@ -16,6 +18,12 @@ function LoginPage() {
   const AUTH = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [cookies, setCookie] = useCookies(['jobify']);
+
+  // function onChangeCookie(newName) {
+  //   setCookie('jobify', newName, { path: '/dashboard' });
+  // }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,6 +37,11 @@ function LoginPage() {
       console.log(error)
     }
   }
+
+  // useEffect(() => {
+  //   setCookie('jobify', { path: '/dashboard' });
+  // }, [])
+  
   return (
     <Wrapper className='container d-flex flex-column justify-content-center align-items-center vh-100'>
       <div className='row'>

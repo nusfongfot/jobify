@@ -2,7 +2,7 @@
 function DashBoard() {
   return (
     <div>
-      DashBoard
+      DashBoardNus
     </div>
   )
 }

@@ -12,7 +12,7 @@ function Navbar() {
     <Wrapper className='d-flex align-items-center justify-content-between p-2'>
       <button
         className='toggle_btn d-sm-none'
-        onClick={() => setIsShowSidebar(!isShowSidebar)}
+        onClick={() => setIsShowSidebar(!isShowSidebar)}        
       >
         <FaAlignLeft />
       </button>
@@ -22,7 +22,7 @@ function Navbar() {
         <button
           type='button'
           className='btn-user'
-          onClick={() => setIsShow(!isShow)}
+          onClick={() => setIsShow(!isShow)}          
         >
           <FaUserCircle />
           {user.firstname}

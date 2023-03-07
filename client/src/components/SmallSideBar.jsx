@@ -1,18 +1,26 @@
-import styled from 'styled-components'
-import { FaTimes } from 'react-icons/fa'
-import links from '../utils/links'
-import Logo from '../assets/wrappers/Logo'
-import { useState } from 'react'
+import styled from "styled-components";
+import { FaTimes } from "react-icons/fa";
+import links from "../utils/links";
+import Logo from "../assets/wrappers/Logo";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 function SmallSideBar() {
-  const [isShow, setIsShow] = useState(false)
+  const [isShow, setIsShow] = useState(false);
+  const handleClose = () => {
+    setIsShow(!isShow);
+  };
   return (
     <Wrapper>
-      <div className={!isShow ? 'sidebar-container show-sidebar' : 'sidebar-container'}>
-        <div className='content'>
+      <div
+        className={
+          !isShow ? "sidebar-container show-sidebar" : "sidebar-container"
+        }
+      >
+        <div className="content">
           <button
-            type='button'
-            className='close-btn'
-            onClick={() => setIsShow(true)}
+            type="button"
+            className="close-btn"
+            onClick={() => setIsShow(!isShow)}
           >
             <FaTimes />
           </button>
@@ -22,19 +30,22 @@ function SmallSideBar() {
           <nav>
             {links.map((item) => {
               return (
-                <div className='text-dark d-flex align-items-center' key={item.id}>
-                  <ul >
-                    {item.icon}
-                    {item.text}
-                  </ul>
-                </div>
-              )
+                <NavLink
+                  className="text-dark d-flex align-items-center"
+                  key={item.id}
+                  to={item.path}
+                  onClick={handleClose}
+                >
+                  <span>{item.icon}</span>
+                  {item.text}
+                </NavLink>
+              );
             })}
           </nav>
         </div>
       </div>
     </Wrapper>
-  )
+  );
 }
 
 const Wrapper = styled.div`
@@ -76,5 +87,5 @@ const Wrapper = styled.div`
     border-color: transparent;
     font-size: 2rem;
   }
-`
-export default SmallSideBar
+`;
+export default SmallSideBar;
